@@ -78,3 +78,10 @@ Comprehensive, exam-oriented revision notes and code snippets for R Programming 
   - K-Medoids Clustering / PAM (Manhattan Distance, Medoid Swapping & Cost)
   - Agglomerative Hierarchical Clustering (Single-Link Distance Matrix Updates & Dendrogram)
   - K-Means vs. K-Medoids (Centroid vs. Medoid, Outlier Robustness, Advantages & Disadvantages)
+
+- **[CAT-2 Exam Paper Full Solutions](cat2_solutions.md)**
+  - Question 1: Dimension Reduction in Data Frames, `drop = FALSE`, `as.matrix()` & `%*%`
+  - Question 2: Merging Multi-Dataset Surveillance Lists via `Reduce()` & Join Comparisons
+  - Question 3: S3 vs. S4 Object Systems & Custom `fitted_model` Class Implementation
+  - Question 4: Log String Regex Parsing (`regmatches`), `as.integer()`, `sprintf()` vs. `paste()`
+  - Question 5: Off-Screen Publication Graphics Pipeline (`plot`, `lines`, `points`, `legend`, `dev.off`)
