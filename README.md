@@ -61,3 +61,20 @@ Comprehensive, exam-oriented revision notes and code snippets for R Programming 
   - Non-linear Models (`nls()`, parameter starting values, polynomial models)
   - Time Series & Autocorrelation (`ts()`, `decompose()`, ACF, PACF)
   - Clustering (K-Means with `kmeans()`, Hierarchical with `hclust()`, `cutree()`)
+
+## 📝 Lecture & Solved Problem Notes
+
+- **[Logistic Regression Notes](logistic_regression_notes.md)**
+  - Linear vs. Logistic Regression & Binary Classification
+  - Sigmoid / S-curve & Decision Thresholds
+  - Derivation of Odds, Log-Odds & Sigmoid Formula
+  - Solved Numerical Problems (Entrance Exam Selection & Pass/Fail Study Hours)
+
+- **[K-Means, K-Medoids, Covariance & Hierarchical Clustering Notes](kmeans_and_other_notes.md)**
+  - Covariance (Sample vs. Population, Solved Stock Problem & Matrix)
+  - Correlation Coefficient ($r$), Scale, Properties & Limitations
+  - Linear Regression by Least Squares (Formulas for $a$ & $b$, Solved 4-point problem)
+  - K-Means Clustering (Complete 3-Cluster Solved Iterations & Convergence)
+  - K-Medoids Clustering / PAM (Manhattan Distance, Medoid Swapping & Cost)
+  - Agglomerative Hierarchical Clustering (Single-Link Distance Matrix Updates & Dendrogram)
+  - K-Means vs. K-Medoids (Centroid vs. Medoid, Outlier Robustness, Advantages & Disadvantages)

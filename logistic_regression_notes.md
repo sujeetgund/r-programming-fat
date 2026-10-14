@@ -1,6 +1,6 @@
 # Logistic Regression — Class Notes & Derivations
 
-> **Source Material:** [Logistic Regression.pdf](file:///c:/Users/sujee/OneDrive/Desktop/This%20Semester/R%20Programming/FAT/Logistic%20Regression.pdf)  
+> **Source Material:** [Logistic Regression.pdf](docs/Logistic%20Regression.pdf)  
 > **Scope:** Strictly covers the concepts, mathematical derivations, and numerical problems presented in the PDF notes.
 
 ---
