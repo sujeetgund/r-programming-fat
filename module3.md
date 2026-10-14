@@ -158,7 +158,7 @@ print(res_outer)
 4  4  Neha    77
 5  5  <NA>    95
 ```
-> *ID 1 has no score $\rightarrow$ `NA`. ID 5 has no name $\rightarrow$ `<NA>`.*
+> *ID 1 has no score → `NA`. ID 5 has no name → `<NA>`.*
 
 ---
 
@@ -405,7 +405,7 @@ print(grade)
 [1] B A C A
 Levels: C < B < A
 ```
-> Notice the **`<` symbol** in `Levels: C < B < A`. R now officially knows that $C < B < A$.
+> Notice the **`<` symbol** in `Levels: C < B < A`. R now officially knows that C < B < A.
 
 Now let's compare student 1 and student 2:
 ```R
@@ -494,7 +494,7 @@ xtabs(~ dept + gender, data = df)
 
 #### Arithmetic Operators
 - `+`, `-`, `*`, `/` : Standard element-wise math
-- `^` or `**` : Exponentiation ($2^3 = 8$)
+- `^` or `**` : Exponentiation (2³ = 8)
 - `%%` : **Modulo** (Remainder: `7 %% 3` = `1`)
 - `%/%` : **Integer Division** (`7 %/% 3` = `2`)
 
@@ -724,7 +724,7 @@ vec                # Output: c(999, 20, 30)
 ### 6.5 The Combine Function `c()`
 - `c()` combines arguments into a vector or list.
 - All elements coerced to a common type:  
-  `Logical` $\rightarrow$ `Integer` $\rightarrow$ `Numeric` $\rightarrow$ `Character`
+  **Logical** → **Integer** → **Numeric** → **Character**
   ```R
   c(TRUE, 5, "Hello")  # Becomes character vector: c("TRUE", "5", "Hello")
   ```
@@ -739,10 +739,10 @@ vec                # Output: c(999, 20, 30)
 | :--- | :--- | :--- | :--- |
 | `abs(x)` | Absolute value | `abs(-15)` | `15` |
 | `sqrt(x)` | Square root | `sqrt(49)` | `7` |
-| `ceiling(x)` | Smallest integer $\ge x$ | `ceiling(4.2)` | `5` |
-| `floor(x)` | Largest integer $\le x$ | `floor(4.8)` | `4` |
+| `ceiling(x)` | Smallest integer ≥ x | `ceiling(4.2)` | `5` |
+| `floor(x)` | Largest integer ≤ x | `floor(4.8)` | `4` |
 | `trunc(x)` | Truncate decimal part | `trunc(4.8)` | `4` |
-| `round(x, digits)` | Round to $n$ digits | `round(3.14159, 2)`| `3.14` |
+| `round(x, digits)` | Round to n digits | `round(3.14159, 2)`| `3.14` |
 | `cumsum(x)` | Cumulative sum | `cumsum(c(1, 2, 3, 4))`| `c(1, 3, 6, 10)` |
 | `diff(x)` | Lagged differences | `diff(c(2, 5, 9, 14))` | `c(3, 4, 5)` |
 
@@ -754,10 +754,10 @@ For any probability distribution in R (Normal, Binomial, Poisson, Uniform), ther
 
 | Prefix | Meaning | What it computes |
 | :---: | :--- | :--- |
-| **`d`** | **Density / PMF / PDF** | Value of probability density function $f(x)$ or point probability $P(X = x)$ |
-| **`p`** | **Cumulative (CDF)** | Cumulative probability $P(X \le x)$ |
-| **`q`** | **Quantile (Inverse CDF)** | Finds $x$ such that $P(X \le x) = p$ |
-| **`r`** | **Random Generation** | Generates $n$ random observations |
+| **`d`** | **Density / PMF / PDF** | Value of probability density function f(x) or point probability P(X = x) |
+| **`p`** | **Cumulative (CDF)** | Cumulative probability P(X ≤ x) |
+| **`q`** | **Quantile (Inverse CDF)** | Finds x such that P(X ≤ x) = p |
+| **`r`** | **Random Generation** | Generates n random observations |
 
 #### Common Distributions
 - **Normal:** `dnorm`, `pnorm`, `qnorm`, `rnorm(n, mean = 0, sd = 1)`

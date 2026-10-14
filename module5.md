@@ -190,15 +190,17 @@ summary(anova_model)
 ```
 
 > **The Golden Decision Rule for Exams:**  
-> If **$\text{p-value} < 0.05$** $\longrightarrow$ **Reject $H_0$** (Statistically significant difference).  
-> If **$\text{p-value} \ge 0.05$** $\longrightarrow$ **Fail to reject $H_0$**.
+> If **p-value < 0.05** → **Reject H₀** (Statistically significant difference).  
+> If **p-value ≥ 0.05** → **Fail to reject H₀** (Not statistically significant).
 
 ---
 
 ## 4. Linear Models (LM)
 
-A Linear Model expresses a dependent response variable $Y$ as a linear combination of predictors $X$:
-$$Y = \beta_0 + \beta_1 X_1 + \dots + \beta_k X_k + \epsilon$$
+A Linear Model expresses a dependent response variable Y as a linear combination of predictors X:
+```
+Y = β₀ + β₁·X₁ + β₂·X₂ + ... + βₖ·Xₖ + ε
+```
 
 ### 4.1 Fitting Linear Models (`lm()`)
 
@@ -226,10 +228,10 @@ summary(fit_simple)
 
 **Key Summary Statistics to Explain in Exams:**
 1. **Coefficients (Estimate):**
-   - Intercept ($\beta_0$): Expected $Y$ when $X = 0$.
-   - Slope ($\beta_1$): Expected change in $Y$ per 1 unit increase in $X$.
-2. **$p$-value (`Pr(>|t|)`):** Tests $H_0: \beta_i = 0$. If $p < 0.05$, the predictor is statistically significant.
-3. **Multiple $R^2$ / Adjusted $R^2$:** Proportion of variance in $Y$ explained by the model (ranges from 0 to 1).
+   - Intercept (β₀): Expected Y when X = 0.
+   - Slope (β₁): Expected change in Y per 1 unit increase in X.
+2. **p-value (`Pr(>|t|)`):** Tests H₀: βᵢ = 0. If p < 0.05, the predictor is statistically significant.
+3. **Multiple R² / Adjusted R²:** Proportion of variance in Y explained by the model (ranges from 0 to 1).
 4. **F-Statistic:** Tests if at least one predictor has a non-zero coefficient.
 
 #### Helper Extraction Functions
@@ -264,20 +266,20 @@ par(mfrow = c(1, 1))
 
 | Feature | Linear Model (`lm`) | Generalized Linear Model (`glm`) |
 | :--- | :--- | :--- |
-| **Response Variable $Y$** | Continuous, unbounded, Normal | Non-normal (Binary, Counts, Proportions) |
-| **Error Distribution** | Normal ($Y \sim \mathcal{N}(\mu, \sigma^2)$) | Exponential Family (Binomial, Poisson, Gamma) |
-| **Relationship** | Linear: $\mu = X\beta$ | Transformed via **Link Function**: $g(\mu) = X\beta$ |
+| **Response Variable (Y)** | Continuous, unbounded, Normal | Non-normal (Binary, Counts, Proportions) |
+| **Error Distribution** | Normal (`Y ~ N(μ, σ²)`) | Exponential Family (Binomial, Poisson, Gamma) |
+| **Relationship** | Linear: `μ = X·β` | Transformed via **Link Function**: `g(μ) = X·β` |
 
 Three components of GLM:
-1. **Random Component:** Probability distribution of $Y$.
-2. **Systematic Component:** Linear predictor $\eta = X\beta$.
-3. **Link Function $g(\mu)$:** Connects expected value $\mu = E(Y)$ to linear predictor $\eta$.
+1. **Random Component:** Probability distribution of Y.
+2. **Systematic Component:** Linear predictor `η = X·β`.
+3. **Link Function g(μ):** Connects expected value `μ = E(Y)` to linear predictor `η`.
 
 ---
 
 ### 5.2 Logistic Regression (Binary Classification: 0 or 1)
 - Distribution: **Binomial**
-- Link function: **Logit** ($\log\left(\frac{p}{1-p}\right)$)
+- Link function: **Logit** (`log(p / (1 - p))`)
 
 ```R
 # Predict transmission type: am (0 = Automatic, 1 = Manual) using wt and hp
@@ -294,8 +296,8 @@ print(prob_preds)
 
 ### 5.3 Poisson Regression (Count Data)
 - Distribution: **Poisson**
-- Link function: **Log** ($\log(\mu) = X\beta$)
-- Used for count of events (e.g., website visits, defects, accidents $\ge 0$).
+- Link function: **Log** (`log(μ) = X·β`)
+- Used for count of events (e.g., website visits, defects, accidents ≥ 0).
 
 ```R
 # Model number of forward gears (gear) or carburetor counts (carb)
@@ -309,7 +311,9 @@ summary(poisson_model)
 
 ### 6.1 Non-linear Least Squares (`nls()`)
 When the relationship between variables cannot be transformed into a linear form:
-$$Y = f(X, \theta) + \epsilon$$
+```
+Y = f(X, θ) + ε
+```
 
 > **Critical Exam Rule:** Unlike `lm()`, `nls()` **requires a starting estimate** (`start = list(...)`) for all unknown parameters to perform numerical optimization (Gauss-Newton algorithm).
 
@@ -354,7 +358,7 @@ plot(ts_sales, main = "Monthly Sales Time Series", ylab = "Units Sold")
 
 ### 7.2 Time Series Decomposition
 Breaks time series into 3 core components:  
-$Y_t = \text{Trend } (T_t) + \text{Seasonal } (S_t) + \text{Random / Irregular } (I_t)$
+**Yₜ = Trend (Tₜ) + Seasonal (Sₜ) + Random/Irregular (Iₜ)**
 
 ```R
 decomp <- decompose(ts_sales, type = "additive") # or type = "multiplicative"
@@ -367,15 +371,15 @@ plot(decomp)
 
 | Function | Full Form | What it Measures |
 | :--- | :--- | :--- |
-| **`acf(x)`** | Auto-Correlation Function | Correlation between time series $Y_t$ and its lagged values $Y_{t-k}$ (includes indirect correlations) |
-| **`pacf(x)`**| Partial Auto-Correlation Function | Direct correlation between $Y_t$ and $Y_{t-k}$, **controlling for** all intermediate lags |
+| **`acf(x)`** | Auto-Correlation Function | Correlation between time series Yₜ and its lagged values Yₜ₋ₖ (includes indirect correlations) |
+| **`pacf(x)`**| Partial Auto-Correlation Function | Direct correlation between Yₜ and Yₜ₋ₖ, **controlling for** all intermediate lags |
 
 ```R
 # Plot correlograms
 acf(ts_sales, main = "Autocorrelation (ACF)")
 pacf(ts_sales, main = "Partial Autocorrelation (PACF)")
 ```
-> **Exam Note:** Spikes crossing the horizontal blue dashed confidence bounds ($\pm \frac{1.96}{\sqrt{N}}$) indicate statistically significant autocorrelation.
+> **Exam Note:** Spikes crossing the horizontal blue dashed confidence bounds (± 1.96 / √N) indicate statistically significant autocorrelation.
 
 ---
 
@@ -386,7 +390,7 @@ Clustering is an **unsupervised learning** technique that partitions unlabelled 
 ### 8.1 K-Means Clustering (`kmeans()`)
 
 #### Algorithm Steps:
-1. Select $K$ initial cluster centroids randomly.
+1. Select K initial cluster centroids randomly.
 2. Assign each observation to the nearest centroid (Euclidean distance).
 3. Recompute centroid coordinates as the mean of assigned points.
 4. Repeat until centroids no longer move (convergence).
@@ -425,7 +429,7 @@ Builds a bottom-up tree hierarchy (Dendrogram).
 #### The 3-Step Workflow:
 1. **Compute Distance Matrix:** `dist(data, method = "euclidean")`
 2. **Build Hierarchy:** `hclust(d, method = "complete")` (linkage methods: `"complete"`, `"single"`, `"average"`, `"ward.D2"`)
-3. **Cut Tree into $K$ Clusters:** `cutree(tree, k)`
+3. **Cut Tree into K Clusters:** `cutree(tree, k)`
 
 ```R
 # 1. Distance matrix
@@ -455,8 +459,8 @@ print(cluster_groups)
    - `mclapply()` uses POSIX forking; on Windows, it runs sequentially on 1 core!
    - On Windows, always use `makeCluster()` and `parLapply()`.
 3. **`predict()` in Logistic Regression**:
-   - If `type = "response"` is omitted, R returns **log-odds** ($\eta$), NOT probabilities.
-   - Always set `type = "response"` to obtain probabilities $\in [0, 1]$.
+   - If `type = "response"` is omitted, R returns **log-odds** (η), NOT probabilities.
+   - Always set `type = "response"` to obtain probabilities in [0, 1].
 4. **`lm()` vs `glm()`**:
    - `lm()` assumes Normal errors with identity link.
    - `glm()` supports Binomial (logistic), Poisson, Gamma via user-specified family and link functions.

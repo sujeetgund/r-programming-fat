@@ -80,14 +80,14 @@ Student2   90      88
 
 | Operation | R Syntax | Mathematical Meaning | Requirements |
 | :--- | :--- | :--- | :--- |
-| **Element-wise Multiplication** | `A * B` | Multiplies $a_{ij} \times b_{ij}$ | $A$ and $B$ must have identical dimensions |
-| **Matrix Multiplication** | `A %*% B` | Dot product of rows of $A$ and columns of $B$ | Columns of $A$ == Rows of $B$ |
-| **Transpose** | `t(A)` | Flips rows and columns ($A^T$) | Any matrix |
-| **Determinant** | `det(A)` | Evaluates scalar $|A|$ | Must be square matrix ($n \times n$) |
-| **Matrix Inverse** | `solve(A)` | Finds $A^{-1}$ such that $A A^{-1} = I$ | Must be square and non-singular ($\det \ne 0$) |
-| **Linear System Solver** | `solve(A, b)` | Solves linear equation system $A x = b$ | $A$ square, $b$ matching vector |
+| **Element-wise Multiplication** | `A * B` | Multiplies `a[i,j] * b[i,j]` | `A` and `B` must have identical dimensions |
+| **Matrix Multiplication** | `A %*% B` | Dot product of rows of `A` and columns of `B` | Columns of `A` == Rows of `B` |
+| **Transpose** | `t(A)` | Flips rows and columns (Aᵀ) | Any matrix |
+| **Determinant** | `det(A)` | Evaluates scalar determinant `det(A)` | Must be square matrix (n x n) |
+| **Matrix Inverse** | `solve(A)` | Finds A⁻¹ such that `A %*% A⁻¹ = I` | Must be square and non-singular (`det(A) ≠ 0`) |
+| **Linear System Solver** | `solve(A, b)` | Solves linear equation system `A %*% x = b` | `A` square, `b` matching vector |
 | **Diagonal Extraction / Creation**| `diag(A)` / `diag(v)` | Extracts diagonal or builds diagonal matrix | Square matrix or vector |
-| **Eigenvalues / Eigenvectors** | `eigen(A)` | Computes spectrum $\lambda$ and vectors $v$ | Square matrix |
+| **Eigenvalues / Eigenvectors** | `eigen(A)` | Computes eigenvalues (λ) and eigenvectors (v) | Square matrix |
 
 ---
 
@@ -99,7 +99,11 @@ B <- matrix(c(5, 6, 7, 8), nrow = 2, byrow = TRUE)
 ```
 
 #### Matrix A and Matrix B:
-$$\mathbf{A} = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}, \quad \mathbf{B} = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}$$
+```
+      [,1] [,2]           [,1] [,2]
+A = [   1    2 ]     B = [   5    6 ]
+    [   3    4 ]         [   7    8 ]
+```
 
 #### 1. Element-wise Multiplication (`A * B`)
 ```R
@@ -111,7 +115,7 @@ print(A * B)
 [1,]    5   12
 [2,]   21   32
 ```
-> *(Row 1: $1 \times 5 = 5$, $2 \times 6 = 12$; Row 2: $3 \times 7 = 21$, $4 \times 8 = 32$)*
+> *(Row 1: 1 * 5 = 5, 2 * 6 = 12; Row 2: 3 * 7 = 21, 4 * 8 = 32)*
 
 ---
 
@@ -125,7 +129,7 @@ print(A %*% B)
 [1,]   19   22
 [2,]   43   50
 ```
-> *Calculation: Row 1 Col 1 = $(1 \times 5) + (2 \times 7) = 5 + 14 = 19$.*
+> *Calculation: Row 1 Col 1 = (1 * 5) + (2 * 7) = 5 + 14 = 19.*
 
 ---
 
@@ -152,15 +156,15 @@ print(solution)
 ```
 [1] 2 3
 ```
-> *(Solution: $x = 2, y = 3$)*
+> *(Solution: x = 2, y = 3)*
 
 ---
 
 ## 3. Applying Functions to Matrix Rows and Columns
 
 ### 3.1 Using `apply()`
-- `MARGIN = 1` $\rightarrow$ Evaluates along **Rows**.
-- `MARGIN = 2` $\rightarrow$ Evaluates along **Columns**.
+- `MARGIN = 1` → Evaluates along **Rows**.
+- `MARGIN = 2` → Evaluates along **Columns**.
 
 ```R
 M <- matrix(1:9, nrow = 3, byrow = TRUE)
@@ -271,7 +275,7 @@ dim(sub2)      # [1] 1 3
 
 ## 7. Higher-Dimensional Arrays
 
-An **Array** is the generalized $n$-dimensional extension of matrices.
+An **Array** is the generalized n-dimensional extension of matrices.
 
 ### 7.1 Creating an Array
 `array(data, dim = c(nrow, ncol, nlayers))`
@@ -490,7 +494,7 @@ ai_team1 ai_team2 web_team1 web_team2
 
 1. **`A * B` vs `A %*% B`**:
    - `*` is element-wise multiplication.
-   - `%*%` is matrix multiplication ($O(n^3)$ dot products).
+   - `%*%` is matrix multiplication (O(n³) dot products).
 2. **Matrix Storage Default**:
    - R stores matrices in **column-major order** (`byrow = FALSE` by default).
 3. **Why use `drop = FALSE`?**:

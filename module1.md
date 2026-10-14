@@ -30,7 +30,7 @@
 - **Primary Data Structures:**
   1. **Atomic Vectors:** 1D homogeneous (all elements same type).
   2. **Matrices:** 2D homogeneous.
-  3. **Arrays:** $n$-dimensional homogeneous.
+  3. **Arrays:** n-dimensional homogeneous.
   4. **Lists:** 1D heterogeneous (can hold mixed types, functions, other lists).
   5. **Data Frames:** 2D heterogeneous tabular structures (columns are equal-length vectors).
   6. **Factors:** Categorical data represented by integer codes + character levels.
@@ -78,7 +78,7 @@ v_raw <- charToRaw("A")     # 6. Raw (byte representation: 41)
 ### 3.3 Automatic Coercion Rule (The Hierarchy)
 When mixing types in `c()`, R automatically coerces all elements to the least restrictive type:
 
-$$\text{Logical} \;\longrightarrow\; \text{Integer} \;\longrightarrow\; \text{Double (Numeric)} \;\longrightarrow\; \text{Character}$$
+**Logical** &rarr; **Integer** &rarr; **Double (Numeric)** &rarr; **Character**
 
 ```R
 c(TRUE, 2L)          # Coerced to Integer: c(1, 2)
@@ -295,9 +295,9 @@ How to compare vectors properly in R:
 
 | Method | What it checks | Return Value | Exam Example |
 | :--- | :--- | :--- | :--- |
-| `x == y` | **Element-wise** equality | Logical vector of `TRUE`/`FALSE` | `c(1, 2) == c(1, 3)` $\rightarrow$ `c(TRUE, FALSE)` |
-| `identical(x, y)` | Exact byte-for-byte identity & identical types | Single boolean (`TRUE`/`FALSE`) | `identical(2, 2L)` $\rightarrow$ `FALSE` (double vs integer) |
-| `all.equal(x, y)` | Nearly equal within floating-point tolerance ($10^{-8}$) | `TRUE` if equal; or text string describing difference | `all.equal(sqrt(2)^2, 2)` $\rightarrow$ `TRUE` |
+| `x == y` | **Element-wise** equality | Logical vector of `TRUE`/`FALSE` | `c(1, 2) == c(1, 3)` → `c(TRUE, FALSE)` |
+| `identical(x, y)` | Exact byte-for-byte identity & identical types | Single boolean (`TRUE`/`FALSE`) | `identical(2, 2L)` → `FALSE` (double vs integer) |
+| `all.equal(x, y)` | Nearly equal within floating-point tolerance (10⁻⁸) | `TRUE` if equal; or text string describing difference | `all.equal(sqrt(2)^2, 2)` → `TRUE` |
 
 ```R
 # Floating point comparison trap:
